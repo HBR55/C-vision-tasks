@@ -1,0 +1,22 @@
+% this code of matlab will create a white circle with black background
+
+% Create a BG
+image = zeros(256, 256); 
+
+% for center and radius of the disk
+center = [128, 128]; 
+radius = 50; 
+
+[x, y] = meshgrid(1:size(image, 2), 1:size(image, 1));
+
+% Calculate the distance from the center for each pixel
+dist = sqrt((x - center(1)).^2 + (y - center(2)).^2);
+
+% Create disk by setting pixels within the radius to white
+disk = (dist <= radius); 
+
+% Combine the disk with the black background
+image(disk) = 1; 
+
+% Display the image
+imshow(image);
