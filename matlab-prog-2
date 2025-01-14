@@ -1,0 +1,24 @@
+% this code of matlab will create a diamond symbol or shape
+
+imageSize = 500; % Size of the square image
+
+background = zeros(imageSize, imageSize); % Black background (all zeros in array)
+
+% Define the center and half-width of the diamond
+centerX = imageSize / 2; % X-coordinate of the center
+centerY = imageSize / 2; % Y-coordinate of the center
+halfWidth = imageSize / 4; % Half the width of the diamond
+
+% Create a grid of coordinates
+[x, y] = meshgrid(1:imageSize, 1:imageSize);
+
+% Define the diamond shape equation
+diamond = abs(x - centerX) + abs(y - centerY) <= halfWidth;
+
+% Combine the diamond with the background
+imageWithDiamond = background; % Start with the black background
+imageWithDiamond(diamond) = 1; % Set the white diamond (value 1)
+
+% Display the image
+figure;
+imshow(imageWithDiamond);
